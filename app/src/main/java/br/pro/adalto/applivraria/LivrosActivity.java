@@ -28,12 +28,22 @@ public class LivrosActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LivrosActivity.this,MainActivity.class);
+                intent.putExtra("acao", "inserir");
+                startActivity(intent);
             }
         });
     }
 
     private void carregarLivros(){
         List<Livro> lista = LivroDAO.getLivros(this);
+        if(lista.size() == 0){
+            Livro fake = new Livro("Nenhum livro cadastrado", "...", null);
+            lista.add(fake);
+            lvLivros.setEnabled(false);
+        }else{
+            lvLivros.setEnabled(true);
+        }
+
         ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista);
         lvLivros.setAdapter(adapter);
     }

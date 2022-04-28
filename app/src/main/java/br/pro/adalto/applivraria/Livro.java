@@ -55,4 +55,9 @@ public class Livro {
     public void setGenero(Genero genero) {
         this.genero = genero;
     }
+
+    @Override
+    public String toString() {
+        return titulo + '\n' + autor;
+    }
 }

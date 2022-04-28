@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
             livro.setAutor(etAutor.getText().toString());
 
             LivroDAO.inserir(this, livro);
+            finish();
         }
     }
 
